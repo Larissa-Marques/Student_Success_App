@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Student_Success_App
@@ -17,12 +10,6 @@ namespace Student_Success_App
             InitializeComponent();
         }
 
-        private static int techId = 15273244;
-        static int generateId()
-        {
-            return techId++;
-        }
-
         private void btn_add_student_Click(object sender, EventArgs e)
         {
             // When this button is clicked, the student name, major, school year, GPA, advisor
@@ -30,49 +17,16 @@ namespace Student_Success_App
             string assgined_ad = "No";
             if (checkBox_advisor.Checked) assgined_ad = "Yes";
 
-            object[] row = {
-                techId++,
+            studentSuccessListTableAdapter.InsertQuery(
                 textBox_name.Text,
                 comboBox_major.Text,
                 comboBox_year.Text,
                 textBox_GPA.Text,
                 assgined_ad,
                 dateTimePicker_appt.Value.ToShortDateString()
-            };
+            );
 
-            //dataView_students.Rows.Add(row);
-
-            /*this.Validate();
-            this.studentSuccessListBindingSource.EndEdit();
-            this.studentSuccessListTableAdapter.Update(this.student_dbDataSet.StudentSuccessList);
-*/
-
-            // dataView_students.Rows.Add(row);
-            DataTable dataTable = this.studentSuccessListTableAdapter.GetData();
-            DataRow newRow = dataTable.NewRow();
-
-            newRow["Student Name"] = "JJ";
-            newRow["GPA"] = 5;
-
-            // Add the row to the rows collecxtion.
-            //dataTable.Rows.Add(row);
-
-            //DataRow newRow = new DataRow(row);
-
-
-            dataTable.Rows.Add(newRow);
-            dataTable.AcceptChanges();
-            //this.studentSuccessListTableAdapter.Update();
-
-
-   /*         this.studentSuccessListTableAdapter.Insert(textBox_name.Text,
-                comboBox_major.Text,
-                comboBox_year.Text,
-                textBox_GPA.Text,
-                assgined_ad,
-                dateTimePicker_appt.Value.ToShortDateString()
-             );*/
-
+            this.studentSuccessListTableAdapter.Fill(this.student_dbDataSet.StudentSuccessList);
         }
 
         private void btn_clear_Click(object sender, EventArgs e)
