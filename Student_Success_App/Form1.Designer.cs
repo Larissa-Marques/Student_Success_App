@@ -54,9 +54,12 @@ namespace Student_Success_App
             this.checkBox_advisor = new System.Windows.Forms.CheckBox();
             this.btn_edit = new System.Windows.Forms.Button();
             this.dataView_students = new System.Windows.Forms.DataGridView();
-            this.student_dbDataSet = new Student_Success_App.student_dbDataSet();
+            this.table1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dbn1DataSet = new Student_Success_App.dbn1DataSet();
             this.studentSuccessListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.student_dbDataSet = new Student_Success_App.student_dbDataSet();
             this.studentSuccessListTableAdapter = new Student_Success_App.student_dbDataSetTableAdapters.StudentSuccessListTableAdapter();
+            this.table1TableAdapter = new Student_Success_App.dbn1DataSetTableAdapters.Table1TableAdapter();
             this.studentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.majorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,8 +68,10 @@ namespace Student_Success_App
             this.advisorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastAppointmentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataView_students)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.student_dbDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbn1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentSuccessListBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.student_dbDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_name
@@ -196,7 +201,7 @@ namespace Student_Success_App
             // 
             // textBox_search
             // 
-            this.textBox_search.Location = new System.Drawing.Point(37, 375);
+            this.textBox_search.Location = new System.Drawing.Point(192, 438);
             this.textBox_search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_search.Name = "textBox_search";
             this.textBox_search.Size = new System.Drawing.Size(133, 22);
@@ -204,7 +209,7 @@ namespace Student_Success_App
             // 
             // btn_search
             // 
-            this.btn_search.Location = new System.Drawing.Point(320, 374);
+            this.btn_search.Location = new System.Drawing.Point(475, 437);
             this.btn_search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(133, 23);
@@ -215,7 +220,7 @@ namespace Student_Success_App
             // 
             // btn_high_GPA
             // 
-            this.btn_high_GPA.Location = new System.Drawing.Point(320, 415);
+            this.btn_high_GPA.Location = new System.Drawing.Point(475, 478);
             this.btn_high_GPA.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_high_GPA.Name = "btn_high_GPA";
             this.btn_high_GPA.Size = new System.Drawing.Size(133, 23);
@@ -226,7 +231,7 @@ namespace Student_Success_App
             // 
             // btn_low_GPA
             // 
-            this.btn_low_GPA.Location = new System.Drawing.Point(37, 415);
+            this.btn_low_GPA.Location = new System.Drawing.Point(192, 478);
             this.btn_low_GPA.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_low_GPA.Name = "btn_low_GPA";
             this.btn_low_GPA.Size = new System.Drawing.Size(133, 23);
@@ -237,7 +242,7 @@ namespace Student_Success_App
             // 
             // btn_remove_record
             // 
-            this.btn_remove_record.Location = new System.Drawing.Point(37, 452);
+            this.btn_remove_record.Location = new System.Drawing.Point(192, 515);
             this.btn_remove_record.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_remove_record.Name = "btn_remove_record";
             this.btn_remove_record.Size = new System.Drawing.Size(133, 23);
@@ -248,7 +253,7 @@ namespace Student_Success_App
             // 
             // btn_remove_all
             // 
-            this.btn_remove_all.Location = new System.Drawing.Point(320, 452);
+            this.btn_remove_all.Location = new System.Drawing.Point(475, 515);
             this.btn_remove_all.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_remove_all.Name = "btn_remove_all";
             this.btn_remove_all.Size = new System.Drawing.Size(133, 23);
@@ -259,7 +264,7 @@ namespace Student_Success_App
             // 
             // btn_close
             // 
-            this.btn_close.Location = new System.Drawing.Point(616, 452);
+            this.btn_close.Location = new System.Drawing.Point(771, 515);
             this.btn_close.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(133, 23);
@@ -269,7 +274,7 @@ namespace Student_Success_App
             // 
             // btn_risk
             // 
-            this.btn_risk.Location = new System.Drawing.Point(615, 415);
+            this.btn_risk.Location = new System.Drawing.Point(770, 478);
             this.btn_risk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_risk.Name = "btn_risk";
             this.btn_risk.Size = new System.Drawing.Size(133, 23);
@@ -290,7 +295,7 @@ namespace Student_Success_App
             // 
             // btn_edit
             // 
-            this.btn_edit.Location = new System.Drawing.Point(616, 374);
+            this.btn_edit.Location = new System.Drawing.Point(771, 437);
             this.btn_edit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_edit.Name = "btn_edit";
             this.btn_edit.Size = new System.Drawing.Size(133, 23);
@@ -312,27 +317,41 @@ namespace Student_Success_App
             this.advisorDataGridViewTextBoxColumn,
             this.lastAppointmentDataGridViewTextBoxColumn});
             this.dataView_students.DataSource = this.studentSuccessListBindingSource;
-            this.dataView_students.Location = new System.Drawing.Point(42, 263);
+            this.dataView_students.Location = new System.Drawing.Point(92, 252);
             this.dataView_students.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataView_students.Name = "dataView_students";
             this.dataView_students.RowHeadersWidth = 51;
             this.dataView_students.RowTemplate.Height = 29;
-            this.dataView_students.Size = new System.Drawing.Size(469, 150);
+            this.dataView_students.Size = new System.Drawing.Size(930, 181);
             this.dataView_students.TabIndex = 26;
             // 
-            // student_dbDataSet
+            // table1BindingSource
             // 
-            this.student_dbDataSet.DataSetName = "student_dbDataSet";
-            this.student_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.table1BindingSource.DataMember = "Table1";
+            this.table1BindingSource.DataSource = this.dbn1DataSet;
+            // 
+            // dbn1DataSet
+            // 
+            this.dbn1DataSet.DataSetName = "dbn1DataSet";
+            this.dbn1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // studentSuccessListBindingSource
             // 
             this.studentSuccessListBindingSource.DataMember = "StudentSuccessList";
             this.studentSuccessListBindingSource.DataSource = this.student_dbDataSet;
             // 
+            // student_dbDataSet
+            // 
+            this.student_dbDataSet.DataSetName = "student_dbDataSet";
+            this.student_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // studentSuccessListTableAdapter
             // 
             this.studentSuccessListTableAdapter.ClearBeforeFill = true;
+            // 
+            // table1TableAdapter
+            // 
+            this.table1TableAdapter.ClearBeforeFill = true;
             // 
             // studentIDDataGridViewTextBoxColumn
             // 
@@ -394,7 +413,7 @@ namespace Student_Success_App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 485);
+            this.ClientSize = new System.Drawing.Size(1116, 546);
             this.Controls.Add(this.dataView_students);
             this.Controls.Add(this.btn_edit);
             this.Controls.Add(this.checkBox_advisor);
@@ -423,8 +442,10 @@ namespace Student_Success_App
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataView_students)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.student_dbDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbn1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentSuccessListBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.student_dbDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,6 +479,9 @@ namespace Student_Success_App
         private student_dbDataSet student_dbDataSet;
         private BindingSource studentSuccessListBindingSource;
         private student_dbDataSetTableAdapters.StudentSuccessListTableAdapter studentSuccessListTableAdapter;
+        private dbn1DataSet dbn1DataSet;
+        private BindingSource table1BindingSource;
+        private dbn1DataSetTableAdapters.Table1TableAdapter table1TableAdapter;
         private DataGridViewTextBoxColumn studentIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn studentNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn majorDataGridViewTextBoxColumn;

@@ -40,7 +40,22 @@ namespace Student_Success_App
                 dateTimePicker_appt.Value.ToShortDateString()
             };
 
-            dataView_students.Rows.Add(row);
+            // dataView_students.Rows.Add(row);
+            //DataTable dataTable = this.studentSuccessListTableAdapter.GetData();
+            //DataRow newRow = dataTable.NewRow();
+
+            // Add the row to the rows collection.
+            //dataTable.Rows.Add(row);
+
+            //this.studentSuccessListTableAdapter.Update(newRow);
+
+            this.studentSuccessListTableAdapter.Insert(textBox_name.Text,
+                comboBox_major.Text,
+                comboBox_year.Text,
+                textBox_GPA.Text,
+                assgined_ad,
+                dateTimePicker_appt.Value.ToShortDateString());
+
         }
 
         private void btn_clear_Click(object sender, EventArgs e)
