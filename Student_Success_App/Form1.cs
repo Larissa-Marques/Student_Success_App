@@ -40,21 +40,38 @@ namespace Student_Success_App
                 dateTimePicker_appt.Value.ToShortDateString()
             };
 
-            // dataView_students.Rows.Add(row);
-            //DataTable dataTable = this.studentSuccessListTableAdapter.GetData();
-            //DataRow newRow = dataTable.NewRow();
+            //dataView_students.Rows.Add(row);
 
-            // Add the row to the rows collection.
+            /*this.Validate();
+            this.studentSuccessListBindingSource.EndEdit();
+            this.studentSuccessListTableAdapter.Update(this.student_dbDataSet.StudentSuccessList);
+*/
+
+            // dataView_students.Rows.Add(row);
+            DataTable dataTable = this.studentSuccessListTableAdapter.GetData();
+            DataRow newRow = dataTable.NewRow();
+
+            newRow["Student Name"] = "JJ";
+            newRow["GPA"] = 5;
+
+            // Add the row to the rows collecxtion.
             //dataTable.Rows.Add(row);
 
-            //this.studentSuccessListTableAdapter.Update(newRow);
+            //DataRow newRow = new DataRow(row);
 
-            this.studentSuccessListTableAdapter.Insert(textBox_name.Text,
+
+            dataTable.Rows.Add(newRow);
+            dataTable.AcceptChanges();
+            //this.studentSuccessListTableAdapter.Update();
+
+
+   /*         this.studentSuccessListTableAdapter.Insert(textBox_name.Text,
                 comboBox_major.Text,
                 comboBox_year.Text,
                 textBox_GPA.Text,
                 assgined_ad,
-                dateTimePicker_appt.Value.ToShortDateString());
+                dateTimePicker_appt.Value.ToShortDateString()
+             );*/
 
         }
 

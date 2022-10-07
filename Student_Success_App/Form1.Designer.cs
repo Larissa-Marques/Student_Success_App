@@ -55,11 +55,9 @@ namespace Student_Success_App
             this.btn_edit = new System.Windows.Forms.Button();
             this.dataView_students = new System.Windows.Forms.DataGridView();
             this.table1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dbn1DataSet = new Student_Success_App.dbn1DataSet();
             this.studentSuccessListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.student_dbDataSet = new Student_Success_App.student_dbDataSet();
             this.studentSuccessListTableAdapter = new Student_Success_App.student_dbDataSetTableAdapters.StudentSuccessListTableAdapter();
-            this.table1TableAdapter = new Student_Success_App.dbn1DataSetTableAdapters.Table1TableAdapter();
             this.studentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.majorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,7 +67,6 @@ namespace Student_Success_App
             this.lastAppointmentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataView_students)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbn1DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentSuccessListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.student_dbDataSet)).BeginInit();
             this.SuspendLayout();
@@ -328,12 +325,6 @@ namespace Student_Success_App
             // table1BindingSource
             // 
             this.table1BindingSource.DataMember = "Table1";
-            this.table1BindingSource.DataSource = this.dbn1DataSet;
-            // 
-            // dbn1DataSet
-            // 
-            this.dbn1DataSet.DataSetName = "dbn1DataSet";
-            this.dbn1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // studentSuccessListBindingSource
             // 
@@ -351,7 +342,6 @@ namespace Student_Success_App
             // 
             // table1TableAdapter
             // 
-            this.table1TableAdapter.ClearBeforeFill = true;
             // 
             // studentIDDataGridViewTextBoxColumn
             // 
@@ -443,7 +433,6 @@ namespace Student_Success_App
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataView_students)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.table1BindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbn1DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentSuccessListBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.student_dbDataSet)).EndInit();
             this.ResumeLayout(false);
@@ -479,9 +468,7 @@ namespace Student_Success_App
         private student_dbDataSet student_dbDataSet;
         private BindingSource studentSuccessListBindingSource;
         private student_dbDataSetTableAdapters.StudentSuccessListTableAdapter studentSuccessListTableAdapter;
-        private dbn1DataSet dbn1DataSet;
         private BindingSource table1BindingSource;
-        private dbn1DataSetTableAdapters.Table1TableAdapter table1TableAdapter;
         private DataGridViewTextBoxColumn studentIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn studentNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn majorDataGridViewTextBoxColumn;
