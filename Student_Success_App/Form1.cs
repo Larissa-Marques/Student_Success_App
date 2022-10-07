@@ -164,5 +164,12 @@ namespace Student_Success_App
                 dataView_students.Rows.Remove(selected_item);
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'student_dbDataSet.StudentSuccessList' table. You can move, or remove it, as needed.
+            this.studentSuccessListTableAdapter.Fill(this.student_dbDataSet.StudentSuccessList);
+
+        }
     }
 }
