@@ -51,6 +51,12 @@ namespace Student_Success_App
             this.btn_close = new System.Windows.Forms.Button();
             this.checkBox_advisor = new System.Windows.Forms.CheckBox();
             this.dataView_students = new System.Windows.Forms.DataGridView();
+            this.table1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.risk_filters_lbl = new System.Windows.Forms.Label();
+            this.low_risk_rbn = new System.Windows.Forms.RadioButton();
+            this.mid_risk_rbn = new System.Windows.Forms.RadioButton();
+            this.high_risk_rbn = new System.Windows.Forms.RadioButton();
+            this.none_rbn = new System.Windows.Forms.RadioButton();
             this.studentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.majorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,16 +66,11 @@ namespace Student_Success_App
             this.lastAppointmentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentSuccessListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.student_dbDataSet = new Student_Success_App.student_dbDataSet();
-            this.table1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.studentSuccessListTableAdapter = new Student_Success_App.student_dbDataSetTableAdapters.StudentSuccessListTableAdapter();
-            this.risk_filters_lbl = new System.Windows.Forms.Label();
-            this.low_risk_rbn = new System.Windows.Forms.RadioButton();
-            this.mid_risk_rbn = new System.Windows.Forms.RadioButton();
-            this.high_risk_rbn = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataView_students)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentSuccessListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.student_dbDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.table1BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_name
@@ -292,6 +293,68 @@ namespace Student_Success_App
             this.dataView_students.Size = new System.Drawing.Size(1067, 264);
             this.dataView_students.TabIndex = 26;
             // 
+            // table1BindingSource
+            // 
+            this.table1BindingSource.DataMember = "Table1";
+            // 
+            // risk_filters_lbl
+            // 
+            this.risk_filters_lbl.AutoSize = true;
+            this.risk_filters_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.risk_filters_lbl.Location = new System.Drawing.Point(658, 13);
+            this.risk_filters_lbl.Name = "risk_filters_lbl";
+            this.risk_filters_lbl.Size = new System.Drawing.Size(85, 16);
+            this.risk_filters_lbl.TabIndex = 27;
+            this.risk_filters_lbl.Text = "Risk Filters";
+            // 
+            // low_risk_rbn
+            // 
+            this.low_risk_rbn.AutoSize = true;
+            this.low_risk_rbn.Location = new System.Drawing.Point(661, 49);
+            this.low_risk_rbn.Name = "low_risk_rbn";
+            this.low_risk_rbn.Size = new System.Drawing.Size(82, 20);
+            this.low_risk_rbn.TabIndex = 28;
+            this.low_risk_rbn.TabStop = true;
+            this.low_risk_rbn.Text = "Low Risk";
+            this.low_risk_rbn.UseVisualStyleBackColor = true;
+            this.low_risk_rbn.CheckedChanged += new System.EventHandler(this.low_risk_rbn_CheckedChanged);
+            // 
+            // mid_risk_rbn
+            // 
+            this.mid_risk_rbn.AutoSize = true;
+            this.mid_risk_rbn.Location = new System.Drawing.Point(661, 76);
+            this.mid_risk_rbn.Name = "mid_risk_rbn";
+            this.mid_risk_rbn.Size = new System.Drawing.Size(116, 20);
+            this.mid_risk_rbn.TabIndex = 29;
+            this.mid_risk_rbn.TabStop = true;
+            this.mid_risk_rbn.Text = "Moderate Risk";
+            this.mid_risk_rbn.UseVisualStyleBackColor = true;
+            this.mid_risk_rbn.CheckedChanged += new System.EventHandler(this.mid_risk_rbn_CheckedChanged);
+            // 
+            // high_risk_rbn
+            // 
+            this.high_risk_rbn.AutoSize = true;
+            this.high_risk_rbn.Location = new System.Drawing.Point(661, 103);
+            this.high_risk_rbn.Name = "high_risk_rbn";
+            this.high_risk_rbn.Size = new System.Drawing.Size(86, 20);
+            this.high_risk_rbn.TabIndex = 30;
+            this.high_risk_rbn.TabStop = true;
+            this.high_risk_rbn.Text = "High Risk";
+            this.high_risk_rbn.UseVisualStyleBackColor = true;
+            this.high_risk_rbn.CheckedChanged += new System.EventHandler(this.high_risk_rbn_CheckedChanged);
+            // 
+            // none_rbn
+            // 
+            this.none_rbn.AutoSize = true;
+            this.none_rbn.Location = new System.Drawing.Point(661, 130);
+            this.none_rbn.Name = "none_rbn";
+            this.none_rbn.Size = new System.Drawing.Size(61, 20);
+            this.none_rbn.TabIndex = 31;
+            this.none_rbn.TabStop = true;
+            this.none_rbn.Text = "None";
+            this.none_rbn.UseVisualStyleBackColor = true;
+            this.none_rbn.CheckedChanged += new System.EventHandler(this.none_rbn_CheckedChanged);
+            // 
             // studentIDDataGridViewTextBoxColumn
             // 
             this.studentIDDataGridViewTextBoxColumn.DataPropertyName = "Student ID";
@@ -358,63 +421,16 @@ namespace Student_Success_App
             this.student_dbDataSet.DataSetName = "student_dbDataSet";
             this.student_dbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // table1BindingSource
-            // 
-            this.table1BindingSource.DataMember = "Table1";
-            // 
             // studentSuccessListTableAdapter
             // 
             this.studentSuccessListTableAdapter.ClearBeforeFill = true;
-            // 
-            // risk_filters_lbl
-            // 
-            this.risk_filters_lbl.AutoSize = true;
-            this.risk_filters_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.risk_filters_lbl.Location = new System.Drawing.Point(658, 13);
-            this.risk_filters_lbl.Name = "risk_filters_lbl";
-            this.risk_filters_lbl.Size = new System.Drawing.Size(85, 16);
-            this.risk_filters_lbl.TabIndex = 27;
-            this.risk_filters_lbl.Text = "Risk Filters";
-            // 
-            // low_risk_rbn
-            // 
-            this.low_risk_rbn.AutoSize = true;
-            this.low_risk_rbn.Location = new System.Drawing.Point(661, 49);
-            this.low_risk_rbn.Name = "low_risk_rbn";
-            this.low_risk_rbn.Size = new System.Drawing.Size(82, 20);
-            this.low_risk_rbn.TabIndex = 28;
-            this.low_risk_rbn.TabStop = true;
-            this.low_risk_rbn.Text = "Low Risk";
-            this.low_risk_rbn.UseVisualStyleBackColor = true;
-            this.low_risk_rbn.CheckedChanged += new System.EventHandler(this.low_risk_rbn_CheckedChanged);
-            // 
-            // mid_risk_rbn
-            // 
-            this.mid_risk_rbn.AutoSize = true;
-            this.mid_risk_rbn.Location = new System.Drawing.Point(661, 76);
-            this.mid_risk_rbn.Name = "mid_risk_rbn";
-            this.mid_risk_rbn.Size = new System.Drawing.Size(116, 20);
-            this.mid_risk_rbn.TabIndex = 29;
-            this.mid_risk_rbn.TabStop = true;
-            this.mid_risk_rbn.Text = "Moderate Risk";
-            this.mid_risk_rbn.UseVisualStyleBackColor = true;
-            // 
-            // high_risk_rbn
-            // 
-            this.high_risk_rbn.AutoSize = true;
-            this.high_risk_rbn.Location = new System.Drawing.Point(661, 103);
-            this.high_risk_rbn.Name = "high_risk_rbn";
-            this.high_risk_rbn.Size = new System.Drawing.Size(86, 20);
-            this.high_risk_rbn.TabIndex = 30;
-            this.high_risk_rbn.TabStop = true;
-            this.high_risk_rbn.Text = "High Risk";
-            this.high_risk_rbn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1116, 620);
+            this.Controls.Add(this.none_rbn);
             this.Controls.Add(this.high_risk_rbn);
             this.Controls.Add(this.mid_risk_rbn);
             this.Controls.Add(this.low_risk_rbn);
@@ -444,9 +460,9 @@ namespace Student_Success_App
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataView_students)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.table1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentSuccessListBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.student_dbDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.table1BindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -489,6 +505,7 @@ namespace Student_Success_App
         private RadioButton low_risk_rbn;
         private RadioButton mid_risk_rbn;
         private RadioButton high_risk_rbn;
+        private RadioButton none_rbn;
     }
 }
 

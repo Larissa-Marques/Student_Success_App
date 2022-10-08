@@ -14,6 +14,7 @@ namespace Student_Success_App
         {
             // TODO: This line of code loads data into the 'student_dbDataSet.StudentSuccessList' table. You can move, or remove it, as needed.
             this.studentSuccessListTableAdapter.Fill(this.student_dbDataSet.StudentSuccessList);
+            none_rbn.Checked = true;
 
         }
 
@@ -73,8 +74,10 @@ namespace Student_Success_App
                 DataGridViewRow highest_GPA_row = new DataGridViewRow();
                 foreach (DataGridViewRow row in dataView_students.Rows)
                 {
-                    if (row.Cells[4].Value != "" && Convert.ToDecimal(row.Cells[4].Value) > highest_GPA)
+                    decimal current_gpa = Convert.ToDecimal(row.Cells[4].Value);
+                    if (row.Cells[4].Value != null && current_gpa > highest_GPA)
                     {
+                        highest_GPA = current_gpa;
                         highest_GPA_row = row;
                     }
                 }
@@ -85,28 +88,45 @@ namespace Student_Success_App
         private void btn_low_GPA_Click(object sender, EventArgs e)
         {
             // When this button is clicked, it will find and show the record with the lowest GPA.
-           /* if (dataView_students.Rows.Count != 0)
+
+            if (dataView_students.Rows.Count != 0)
             {
                 decimal lowest_GPA = 4;
-                DataGridViewRow lowest_GPA_item = new DataGridViewRow();
-                foreach (DataGridViewRow item in dataView_students.Rows)
+                DataGridViewRow lowest_GPA_row = new DataGridViewRow();
+                foreach (DataGridViewRow row in dataView_students.Rows)
                 {
-                    decimal GPA = Convert.ToDecimal(item.Cells[4].Value);
-                    if (GPA < lowest_GPA)
+                    decimal current_gpa = Convert.ToDecimal(row.Cells[4].Value);
+                    if (row.Cells[4].Value != null && current_gpa < lowest_GPA)
                     {
-                        lowest_GPA = GPA;
-                        lowest_GPA_item = item;
+                        lowest_GPA = current_gpa;
+                        lowest_GPA_row = row;
                     }
                 }
+                lowest_GPA_row.Selected = true;
+            }
 
-                MessageBox.Show("Student ID " + lowest_GPA_item.Cells[0].Value + "\nName: " +
-                        lowest_GPA_item.Cells[1].Value + "\nMajor: " +
-                        lowest_GPA_item.Cells[2].Value + "\nYear: " +
-                        lowest_GPA_item.Cells[3].Value + "\nGPA: " +
-                        lowest_GPA_item.Cells[4].Value + "\nAdvisor: " +
-                        lowest_GPA_item.Cells[5].Value + "\nAppointment: " +
-                        lowest_GPA_item.Cells[6].Value); ;
-            }*/
+            /* if (dataView_students.Rows.Count != 0)
+             {
+                 decimal lowest_GPA = 4;
+                 DataGridViewRow lowest_GPA_item = new DataGridViewRow();
+                 foreach (DataGridViewRow item in dataView_students.Rows)
+                 {
+                     decimal GPA = Convert.ToDecimal(item.Cells[4].Value);
+                     if (GPA < lowest_GPA)
+                     {
+                         lowest_GPA = GPA;
+                         lowest_GPA_item = item;
+                     }
+                 }
+
+                 MessageBox.Show("Student ID " + lowest_GPA_item.Cells[0].Value + "\nName: " +
+                         lowest_GPA_item.Cells[1].Value + "\nMajor: " +
+                         lowest_GPA_item.Cells[2].Value + "\nYear: " +
+                         lowest_GPA_item.Cells[3].Value + "\nGPA: " +
+                         lowest_GPA_item.Cells[4].Value + "\nAdvisor: " +
+                         lowest_GPA_item.Cells[5].Value + "\nAppointment: " +
+                         lowest_GPA_item.Cells[6].Value); ;
+             }*/
         }
 
         private void btn_remove_record_Click(object sender, EventArgs e)
@@ -127,9 +147,24 @@ namespace Student_Success_App
             Application.Exit();
         }
 
+        private void none_rbn_CheckedChanged(object sender, EventArgs e)
+        {
+            this.studentSuccessListTableAdapter.Fill(this.student_dbDataSet.StudentSuccessList);
+        }
+
         private void low_risk_rbn_CheckedChanged(object sender, EventArgs e)
         {
             this.studentSuccessListTableAdapter.LowRisk(this.student_dbDataSet.StudentSuccessList);
+        }
+
+        private void mid_risk_rbn_CheckedChanged(object sender, EventArgs e)
+        {
+            this.studentSuccessListTableAdapter.MidRisk(this.student_dbDataSet.StudentSuccessList);
+        }
+
+        private void high_risk_rbn_CheckedChanged(object sender, EventArgs e)
+        {
+            this.studentSuccessListTableAdapter.HighRisk(this.student_dbDataSet.StudentSuccessList);
         }
     }
 }
