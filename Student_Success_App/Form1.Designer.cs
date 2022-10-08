@@ -49,7 +49,6 @@ namespace Student_Success_App
             this.btn_low_GPA = new System.Windows.Forms.Button();
             this.btn_remove_record = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
-            this.btn_risk = new System.Windows.Forms.Button();
             this.checkBox_advisor = new System.Windows.Forms.CheckBox();
             this.dataView_students = new System.Windows.Forms.DataGridView();
             this.studentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +62,10 @@ namespace Student_Success_App
             this.student_dbDataSet = new Student_Success_App.student_dbDataSet();
             this.table1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.studentSuccessListTableAdapter = new Student_Success_App.student_dbDataSetTableAdapters.StudentSuccessListTableAdapter();
+            this.risk_filters_lbl = new System.Windows.Forms.Label();
+            this.low_risk_rbn = new System.Windows.Forms.RadioButton();
+            this.mid_risk_rbn = new System.Windows.Forms.RadioButton();
+            this.high_risk_rbn = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataView_students)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentSuccessListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.student_dbDataSet)).BeginInit();
@@ -89,7 +92,7 @@ namespace Student_Success_App
             // 
             // textBox_name
             // 
-            this.textBox_name.Location = new System.Drawing.Point(159, 22);
+            this.textBox_name.Location = new System.Drawing.Point(133, 20);
             this.textBox_name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_name.Name = "textBox_name";
             this.textBox_name.Size = new System.Drawing.Size(125, 22);
@@ -115,7 +118,7 @@ namespace Student_Success_App
             // lbl_year
             // 
             this.lbl_year.AutoSize = true;
-            this.lbl_year.Location = new System.Drawing.Point(37, 98);
+            this.lbl_year.Location = new System.Drawing.Point(34, 95);
             this.lbl_year.Name = "lbl_year";
             this.lbl_year.Size = new System.Drawing.Size(36, 16);
             this.lbl_year.TabIndex = 4;
@@ -141,7 +144,7 @@ namespace Student_Success_App
             // lbl_GPA
             // 
             this.lbl_GPA.AutoSize = true;
-            this.lbl_GPA.Location = new System.Drawing.Point(40, 132);
+            this.lbl_GPA.Location = new System.Drawing.Point(34, 132);
             this.lbl_GPA.Name = "lbl_GPA";
             this.lbl_GPA.Size = new System.Drawing.Size(35, 16);
             this.lbl_GPA.TabIndex = 6;
@@ -149,7 +152,7 @@ namespace Student_Success_App
             // 
             // textBox_GPA
             // 
-            this.textBox_GPA.Location = new System.Drawing.Point(133, 130);
+            this.textBox_GPA.Location = new System.Drawing.Point(133, 129);
             this.textBox_GPA.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_GPA.Name = "textBox_GPA";
             this.textBox_GPA.Size = new System.Drawing.Size(125, 22);
@@ -215,7 +218,7 @@ namespace Student_Success_App
             // 
             // btn_high_GPA
             // 
-            this.btn_high_GPA.Location = new System.Drawing.Point(493, 68);
+            this.btn_high_GPA.Location = new System.Drawing.Point(493, 65);
             this.btn_high_GPA.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_high_GPA.Name = "btn_high_GPA";
             this.btn_high_GPA.Size = new System.Drawing.Size(133, 48);
@@ -237,7 +240,7 @@ namespace Student_Success_App
             // 
             // btn_remove_record
             // 
-            this.btn_remove_record.Location = new System.Drawing.Point(342, 130);
+            this.btn_remove_record.Location = new System.Drawing.Point(342, 117);
             this.btn_remove_record.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_remove_record.Name = "btn_remove_record";
             this.btn_remove_record.Size = new System.Drawing.Size(133, 48);
@@ -248,7 +251,7 @@ namespace Student_Success_App
             // 
             // btn_close
             // 
-            this.btn_close.Location = new System.Drawing.Point(493, 195);
+            this.btn_close.Location = new System.Drawing.Point(493, 117);
             this.btn_close.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(133, 48);
@@ -257,20 +260,10 @@ namespace Student_Success_App
             this.btn_close.UseVisualStyleBackColor = true;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
-            // btn_risk
-            // 
-            this.btn_risk.Location = new System.Drawing.Point(493, 130);
-            this.btn_risk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_risk.Name = "btn_risk";
-            this.btn_risk.Size = new System.Drawing.Size(133, 48);
-            this.btn_risk.TabIndex = 23;
-            this.btn_risk.Text = "Calculate Risk";
-            this.btn_risk.UseVisualStyleBackColor = true;
-            // 
             // checkBox_advisor
             // 
             this.checkBox_advisor.AutoSize = true;
-            this.checkBox_advisor.Location = new System.Drawing.Point(40, 164);
+            this.checkBox_advisor.Location = new System.Drawing.Point(37, 164);
             this.checkBox_advisor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox_advisor.Name = "checkBox_advisor";
             this.checkBox_advisor.Size = new System.Drawing.Size(142, 20);
@@ -373,14 +366,61 @@ namespace Student_Success_App
             // 
             this.studentSuccessListTableAdapter.ClearBeforeFill = true;
             // 
+            // risk_filters_lbl
+            // 
+            this.risk_filters_lbl.AutoSize = true;
+            this.risk_filters_lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.risk_filters_lbl.Location = new System.Drawing.Point(658, 13);
+            this.risk_filters_lbl.Name = "risk_filters_lbl";
+            this.risk_filters_lbl.Size = new System.Drawing.Size(85, 16);
+            this.risk_filters_lbl.TabIndex = 27;
+            this.risk_filters_lbl.Text = "Risk Filters";
+            // 
+            // low_risk_rbn
+            // 
+            this.low_risk_rbn.AutoSize = true;
+            this.low_risk_rbn.Location = new System.Drawing.Point(661, 49);
+            this.low_risk_rbn.Name = "low_risk_rbn";
+            this.low_risk_rbn.Size = new System.Drawing.Size(82, 20);
+            this.low_risk_rbn.TabIndex = 28;
+            this.low_risk_rbn.TabStop = true;
+            this.low_risk_rbn.Text = "Low Risk";
+            this.low_risk_rbn.UseVisualStyleBackColor = true;
+            this.low_risk_rbn.CheckedChanged += new System.EventHandler(this.low_risk_rbn_CheckedChanged);
+            // 
+            // mid_risk_rbn
+            // 
+            this.mid_risk_rbn.AutoSize = true;
+            this.mid_risk_rbn.Location = new System.Drawing.Point(661, 76);
+            this.mid_risk_rbn.Name = "mid_risk_rbn";
+            this.mid_risk_rbn.Size = new System.Drawing.Size(116, 20);
+            this.mid_risk_rbn.TabIndex = 29;
+            this.mid_risk_rbn.TabStop = true;
+            this.mid_risk_rbn.Text = "Moderate Risk";
+            this.mid_risk_rbn.UseVisualStyleBackColor = true;
+            // 
+            // high_risk_rbn
+            // 
+            this.high_risk_rbn.AutoSize = true;
+            this.high_risk_rbn.Location = new System.Drawing.Point(661, 103);
+            this.high_risk_rbn.Name = "high_risk_rbn";
+            this.high_risk_rbn.Size = new System.Drawing.Size(86, 20);
+            this.high_risk_rbn.TabIndex = 30;
+            this.high_risk_rbn.TabStop = true;
+            this.high_risk_rbn.Text = "High Risk";
+            this.high_risk_rbn.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1116, 620);
+            this.Controls.Add(this.high_risk_rbn);
+            this.Controls.Add(this.mid_risk_rbn);
+            this.Controls.Add(this.low_risk_rbn);
+            this.Controls.Add(this.risk_filters_lbl);
             this.Controls.Add(this.dataView_students);
             this.Controls.Add(this.checkBox_advisor);
-            this.Controls.Add(this.btn_risk);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.btn_remove_record);
             this.Controls.Add(this.btn_low_GPA);
@@ -432,7 +472,6 @@ namespace Student_Success_App
         private Button btn_low_GPA;
         private Button btn_remove_record;
         private Button btn_close;
-        private Button btn_risk;
         private CheckBox checkBox_advisor;
         private DataGridView dataView_students;
         private student_dbDataSet student_dbDataSet;
@@ -446,6 +485,10 @@ namespace Student_Success_App
         private DataGridViewTextBoxColumn gPADataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn advisorDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn lastAppointmentDataGridViewTextBoxColumn;
+        private Label risk_filters_lbl;
+        private RadioButton low_risk_rbn;
+        private RadioButton mid_risk_rbn;
+        private RadioButton high_risk_rbn;
     }
 }
 

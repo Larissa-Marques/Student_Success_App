@@ -126,5 +126,10 @@ namespace Student_Success_App
         {
             Application.Exit();
         }
+
+        private void low_risk_rbn_CheckedChanged(object sender, EventArgs e)
+        {
+            this.studentSuccessListTableAdapter.LowRisk(this.student_dbDataSet.StudentSuccessList);
+        }
     }
 }
