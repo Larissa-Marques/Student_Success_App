@@ -1,4 +1,7 @@
-﻿using System;
+﻿// The purpose of this application is to filter if students are high, moderate or low risk depending on 
+// different variables such as GPA and meeeting with an advisor. 
+
+using System;
 using System.Windows.Forms;
 
 namespace Student_Success_App
@@ -12,7 +15,6 @@ namespace Student_Success_App
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'student_dbDataSet.StudentSuccessList' table. You can move, or remove it, as needed.
             this.studentSuccessListTableAdapter.Fill(this.student_dbDataSet.StudentSuccessList);
             none_rbn.Checked = true;
 
@@ -20,8 +22,9 @@ namespace Student_Success_App
 
         private void btn_add_student_Click(object sender, EventArgs e)
         {
-            // When this button is clicked, the student name, major, school year, GPA, advisor
-            // assignment information, appointment date will be displayed on the datagridview.
+            // When Add button is clicked, the student name, major, school year, GPA, advisor
+            // assignment information, appointment date will be added to the db and be
+            // displayed on the datagridview.
             Boolean assgined_ad = false;
             if (checkBox_advisor.Checked) assgined_ad = true;
 
@@ -41,7 +44,7 @@ namespace Student_Success_App
 
         private void btn_clear_Click(object sender, EventArgs e)
         {
-            // When this button is clicked, the information will be erased.
+            // When this button is clicked, the inputs will be cleared.
             textBox_name.Text = "";
             comboBox_major.Text = "";
             comboBox_year.Text = "";
@@ -51,7 +54,7 @@ namespace Student_Success_App
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-            //When this button is clicked, it will find on the datagridview the data entered by the user.
+            // When this button is clicked, it will find on the datagridview the data entered by the user.
             string search_term = textBox_search.Text;
             Boolean search_found = false;
             dataView_students.ClearSelection();
@@ -69,7 +72,7 @@ namespace Student_Success_App
 
         private void btn_high_GPA_Click(object sender, EventArgs e)
         {
-            // When this button is clicked, it will find and show the record with the highest GPA.
+            // When this button is clicked, it will find and highlight the record with the highest GPA.
             if (dataView_students.Rows.Count != 0)
             {
                 decimal highest_GPA = 0;
@@ -89,7 +92,7 @@ namespace Student_Success_App
 
         private void btn_low_GPA_Click(object sender, EventArgs e)
         {
-            // When this button is clicked, it will find and show the record with the lowest GPA.
+            // When this button is clicked, it will find and highlight the record with the lowest GPA.
 
             if (dataView_students.Rows.Count != 0)
             {
@@ -110,11 +113,10 @@ namespace Student_Success_App
 
         private void btn_remove_record_Click(object sender, EventArgs e)
         {
-            // When this button is clicked, it will remove all the selected information.
+            // When this button is clicked, it will remove the selected record.
 
             if (dataView_students.SelectedRows.Count > 0)
             {
-                //dataView_students.Rows.Remove(dataView_students.SelectedRows[0]);
                 int student_id = (int)dataView_students.SelectedRows[0].Cells[0].Value;
                 studentSuccessListTableAdapter.DeleteQuery(student_id);
             }
