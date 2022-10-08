@@ -22,14 +22,16 @@ namespace Student_Success_App
         {
             // When this button is clicked, the student name, major, school year, GPA, advisor
             // assignment information, appointment date will be displayed on the datagridview.
-            string assgined_ad = "No";
-            if (checkBox_advisor.Checked) assgined_ad = "Yes";
+            Boolean assgined_ad = false;
+            if (checkBox_advisor.Checked) assgined_ad = true;
+
+            decimal gpa = Convert.ToDecimal(textBox_GPA.Text);
 
             studentSuccessListTableAdapter.InsertQuery(
                 textBox_name.Text,
                 comboBox_major.Text,
                 comboBox_year.Text,
-                textBox_GPA.Text,
+                gpa,
                 assgined_ad,
                 dateTimePicker_appt.Value.ToShortDateString()
             );
@@ -104,29 +106,6 @@ namespace Student_Success_App
                 }
                 lowest_GPA_row.Selected = true;
             }
-
-            /* if (dataView_students.Rows.Count != 0)
-             {
-                 decimal lowest_GPA = 4;
-                 DataGridViewRow lowest_GPA_item = new DataGridViewRow();
-                 foreach (DataGridViewRow item in dataView_students.Rows)
-                 {
-                     decimal GPA = Convert.ToDecimal(item.Cells[4].Value);
-                     if (GPA < lowest_GPA)
-                     {
-                         lowest_GPA = GPA;
-                         lowest_GPA_item = item;
-                     }
-                 }
-
-                 MessageBox.Show("Student ID " + lowest_GPA_item.Cells[0].Value + "\nName: " +
-                         lowest_GPA_item.Cells[1].Value + "\nMajor: " +
-                         lowest_GPA_item.Cells[2].Value + "\nYear: " +
-                         lowest_GPA_item.Cells[3].Value + "\nGPA: " +
-                         lowest_GPA_item.Cells[4].Value + "\nAdvisor: " +
-                         lowest_GPA_item.Cells[5].Value + "\nAppointment: " +
-                         lowest_GPA_item.Cells[6].Value); ;
-             }*/
         }
 
         private void btn_remove_record_Click(object sender, EventArgs e)

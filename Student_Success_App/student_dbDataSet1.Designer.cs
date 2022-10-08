@@ -1065,14 +1065,14 @@ namespace Student_Success_App.student_dbDataSetTableAdapters {
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "INSERT INTO `StudentSuccessList` (`Student Name`, `Major`, `Year`, `GPA`, `Adviso" +
-                "r`, `Last Appointment`) VALUES (?, ?, ?, ?, ?, ?)";
+            this._commandCollection[3].CommandText = "INSERT INTO `StudentSuccessList` (`Student Name`, `Major`, `Year`, GPA, `Advisor`" +
+                ", `Last Appointment`) VALUES (?, ?, ?, ?, ?, ?)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Student_Name", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Student Name", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Major", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Major", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Year", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Year", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GPA", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GPA", global::System.Data.DataRowVersion.Current, false, null));
-            this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Advisor", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Advisor", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GPA", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(15)), ((byte)(0)), "GPA", global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Advisor", global::System.Data.OleDb.OleDbType.Boolean, 2, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Advisor", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[3].Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Last_Appointment", global::System.Data.OleDb.OleDbType.WChar, 255, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Last Appointment", global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[4] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[4].Connection = this.Connection;
@@ -1462,7 +1462,7 @@ namespace Student_Success_App.student_dbDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertQuery(string Student_Name, string Major, string Year, string GPA, string Advisor, string Last_Appointment) {
+        public virtual int InsertQuery(string Student_Name, string Major, string Year, global::System.Nullable<decimal> GPA, bool Advisor, string Last_Appointment) {
             global::System.Data.OleDb.OleDbCommand command = this.CommandCollection[3];
             if ((Student_Name == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
@@ -1482,18 +1482,13 @@ namespace Student_Success_App.student_dbDataSetTableAdapters {
             else {
                 command.Parameters[2].Value = ((string)(Year));
             }
-            if ((GPA == null)) {
+            if ((GPA.HasValue == true)) {
+                command.Parameters[3].Value = ((decimal)(GPA.Value));
+            }
+            else {
                 command.Parameters[3].Value = global::System.DBNull.Value;
             }
-            else {
-                command.Parameters[3].Value = ((string)(GPA));
-            }
-            if ((Advisor == null)) {
-                command.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[4].Value = ((string)(Advisor));
-            }
+            command.Parameters[4].Value = ((bool)(Advisor));
             if ((Last_Appointment == null)) {
                 command.Parameters[5].Value = global::System.DBNull.Value;
             }
