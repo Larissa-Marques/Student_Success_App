@@ -255,6 +255,7 @@ namespace Student_Success_App
             this.btn_close.TabIndex = 22;
             this.btn_close.Text = "Close";
             this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // btn_risk
             // 

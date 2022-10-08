@@ -10,6 +10,13 @@ namespace Student_Success_App
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'student_dbDataSet.StudentSuccessList' table. You can move, or remove it, as needed.
+            this.studentSuccessListTableAdapter.Fill(this.student_dbDataSet.StudentSuccessList);
+
+        }
+
         private void btn_add_student_Click(object sender, EventArgs e)
         {
             // When this button is clicked, the student name, major, school year, GPA, advisor
@@ -105,17 +112,19 @@ namespace Student_Success_App
         private void btn_remove_record_Click(object sender, EventArgs e)
         {
             // When this button is clicked, it will remove all the selected information.
+
             if (dataView_students.SelectedRows.Count > 0)
             {
-                dataView_students.Rows.Remove(dataView_students.SelectedRows[0]);
+                //dataView_students.Rows.Remove(dataView_students.SelectedRows[0]);
+                int student_id = (int)dataView_students.SelectedRows[0].Cells[0].Value;
+                studentSuccessListTableAdapter.DeleteQuery(student_id);
             }
+            this.studentSuccessListTableAdapter.Fill(this.student_dbDataSet.StudentSuccessList);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btn_close_Click(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'student_dbDataSet.StudentSuccessList' table. You can move, or remove it, as needed.
-            this.studentSuccessListTableAdapter.Fill(this.student_dbDataSet.StudentSuccessList);
-
+            Application.Exit();
         }
     }
 }
