@@ -48,11 +48,9 @@ namespace Student_Success_App
             this.btn_high_GPA = new System.Windows.Forms.Button();
             this.btn_low_GPA = new System.Windows.Forms.Button();
             this.btn_remove_record = new System.Windows.Forms.Button();
-            this.btn_remove_all = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
             this.btn_risk = new System.Windows.Forms.Button();
             this.checkBox_advisor = new System.Windows.Forms.CheckBox();
-            this.btn_edit = new System.Windows.Forms.Button();
             this.dataView_students = new System.Windows.Forms.DataGridView();
             this.studentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -198,7 +196,7 @@ namespace Student_Success_App
             // 
             // textBox_search
             // 
-            this.textBox_search.Location = new System.Drawing.Point(377, 40);
+            this.textBox_search.Location = new System.Drawing.Point(342, 23);
             this.textBox_search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_search.Name = "textBox_search";
             this.textBox_search.Size = new System.Drawing.Size(133, 22);
@@ -206,18 +204,18 @@ namespace Student_Success_App
             // 
             // btn_search
             // 
-            this.btn_search.Location = new System.Drawing.Point(660, 39);
+            this.btn_search.Location = new System.Drawing.Point(493, 11);
             this.btn_search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(133, 48);
             this.btn_search.TabIndex = 17;
-            this.btn_search.Text = "Search";
+            this.btn_search.Text = "Search (Name)";
             this.btn_search.UseVisualStyleBackColor = true;
             this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // btn_high_GPA
             // 
-            this.btn_high_GPA.Location = new System.Drawing.Point(660, 80);
+            this.btn_high_GPA.Location = new System.Drawing.Point(493, 68);
             this.btn_high_GPA.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_high_GPA.Name = "btn_high_GPA";
             this.btn_high_GPA.Size = new System.Drawing.Size(133, 48);
@@ -228,7 +226,7 @@ namespace Student_Success_App
             // 
             // btn_low_GPA
             // 
-            this.btn_low_GPA.Location = new System.Drawing.Point(377, 80);
+            this.btn_low_GPA.Location = new System.Drawing.Point(342, 65);
             this.btn_low_GPA.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_low_GPA.Name = "btn_low_GPA";
             this.btn_low_GPA.Size = new System.Drawing.Size(133, 48);
@@ -239,7 +237,7 @@ namespace Student_Success_App
             // 
             // btn_remove_record
             // 
-            this.btn_remove_record.Location = new System.Drawing.Point(377, 117);
+            this.btn_remove_record.Location = new System.Drawing.Point(342, 130);
             this.btn_remove_record.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_remove_record.Name = "btn_remove_record";
             this.btn_remove_record.Size = new System.Drawing.Size(133, 48);
@@ -248,20 +246,9 @@ namespace Student_Success_App
             this.btn_remove_record.UseVisualStyleBackColor = true;
             this.btn_remove_record.Click += new System.EventHandler(this.btn_remove_record_Click);
             // 
-            // btn_remove_all
-            // 
-            this.btn_remove_all.Location = new System.Drawing.Point(660, 117);
-            this.btn_remove_all.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_remove_all.Name = "btn_remove_all";
-            this.btn_remove_all.Size = new System.Drawing.Size(133, 48);
-            this.btn_remove_all.TabIndex = 21;
-            this.btn_remove_all.Text = "Remove All";
-            this.btn_remove_all.UseVisualStyleBackColor = true;
-            this.btn_remove_all.Click += new System.EventHandler(this.btn_remove_all_Click);
-            // 
             // btn_close
             // 
-            this.btn_close.Location = new System.Drawing.Point(956, 117);
+            this.btn_close.Location = new System.Drawing.Point(493, 195);
             this.btn_close.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(133, 48);
@@ -271,7 +258,7 @@ namespace Student_Success_App
             // 
             // btn_risk
             // 
-            this.btn_risk.Location = new System.Drawing.Point(955, 80);
+            this.btn_risk.Location = new System.Drawing.Point(493, 130);
             this.btn_risk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_risk.Name = "btn_risk";
             this.btn_risk.Size = new System.Drawing.Size(133, 48);
@@ -290,17 +277,6 @@ namespace Student_Success_App
             this.checkBox_advisor.Text = "Assigned Advisor?";
             this.checkBox_advisor.UseVisualStyleBackColor = true;
             // 
-            // btn_edit
-            // 
-            this.btn_edit.Location = new System.Drawing.Point(956, 39);
-            this.btn_edit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_edit.Name = "btn_edit";
-            this.btn_edit.Size = new System.Drawing.Size(133, 48);
-            this.btn_edit.TabIndex = 25;
-            this.btn_edit.Text = "Edit Record";
-            this.btn_edit.UseVisualStyleBackColor = true;
-            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
-            // 
             // dataView_students
             // 
             this.dataView_students.AutoGenerateColumns = false;
@@ -314,12 +290,12 @@ namespace Student_Success_App
             this.advisorDataGridViewTextBoxColumn,
             this.lastAppointmentDataGridViewTextBoxColumn});
             this.dataView_students.DataSource = this.studentSuccessListBindingSource;
-            this.dataView_students.Location = new System.Drawing.Point(37, 252);
+            this.dataView_students.Location = new System.Drawing.Point(37, 296);
             this.dataView_students.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataView_students.Name = "dataView_students";
             this.dataView_students.RowHeadersWidth = 51;
             this.dataView_students.RowTemplate.Height = 29;
-            this.dataView_students.Size = new System.Drawing.Size(1067, 308);
+            this.dataView_students.Size = new System.Drawing.Size(1067, 264);
             this.dataView_students.TabIndex = 26;
             // 
             // studentIDDataGridViewTextBoxColumn
@@ -400,13 +376,11 @@ namespace Student_Success_App
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1116, 571);
+            this.ClientSize = new System.Drawing.Size(1116, 620);
             this.Controls.Add(this.dataView_students);
-            this.Controls.Add(this.btn_edit);
             this.Controls.Add(this.checkBox_advisor);
             this.Controls.Add(this.btn_risk);
             this.Controls.Add(this.btn_close);
-            this.Controls.Add(this.btn_remove_all);
             this.Controls.Add(this.btn_remove_record);
             this.Controls.Add(this.btn_low_GPA);
             this.Controls.Add(this.btn_high_GPA);
@@ -456,11 +430,9 @@ namespace Student_Success_App
         private Button btn_high_GPA;
         private Button btn_low_GPA;
         private Button btn_remove_record;
-        private Button btn_remove_all;
         private Button btn_close;
         private Button btn_risk;
         private CheckBox checkBox_advisor;
-        private Button btn_edit;
         private DataGridView dataView_students;
         private student_dbDataSet student_dbDataSet;
         private BindingSource studentSuccessListBindingSource;
