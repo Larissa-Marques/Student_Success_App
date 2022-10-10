@@ -23,8 +23,8 @@ namespace Student_Success_App
 
         private void GPA_Form_Load(object sender, EventArgs e)
         {
-            textBox_avg_gpa.Text = avg_gpa.ToString();
-            textBox_without_advisor_percent.Text = percent_with_advisors.ToString();
+            textBox_avg_gpa.Text = avg_gpa.ToString("0.00");
+            textBox_without_advisor_percent.Text = percent_with_advisors.ToString("0.00") + "%";
 
         }
     }

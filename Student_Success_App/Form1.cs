@@ -2,6 +2,7 @@
 // different variables such as GPA and meeting with an advisor. 
 
 using System;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Student_Success_App
@@ -89,7 +90,7 @@ namespace Student_Success_App
                 foreach (DataGridViewRow row in dataView_students.Rows)
                 {
                     decimal current_gpa = Convert.ToDecimal(row.Cells[4].Value);
-                    if (row.Cells[4].Value != null && current_gpa > highest_GPA)
+                    if (current_gpa > highest_GPA)
                     {
                         highest_GPA = current_gpa;
                         highest_GPA_row = row;
@@ -110,7 +111,7 @@ namespace Student_Success_App
                 foreach (DataGridViewRow row in dataView_students.Rows)
                 {
                     decimal current_gpa = Convert.ToDecimal(row.Cells[4].Value);
-                    if (row.Cells[4].Value != null && current_gpa < lowest_GPA)
+                    if (current_gpa < lowest_GPA)
                     {
                         lowest_GPA = current_gpa;
                         lowest_GPA_row = row;
@@ -169,14 +170,46 @@ namespace Student_Success_App
 
         private decimal calculate_avg_gpa()
         {
-            // Calcualte the average gpa of the whole studnet list 
-            return 2;
+            // Calcualte the average gpa of students 
+            decimal average = 0;
+            if (dataView_students.Rows.Count != 0)
+            {
+                decimal sum = 0;
+                int count = 0;
+
+                foreach (DataGridViewRow row in dataView_students.Rows)
+                {
+                    if (row.Cells[4].Value != null)
+                    {
+                        sum = sum + Convert.ToDecimal(row.Cells[4].Value);
+                        count++;
+                    }
+                }
+                average = sum / count;
+            }
+            return average;
         }
 
         private decimal calculate_percent_with_advisors()
         {
-            // Calcualte the percentage of students with an advisor for the entire student list
-            return 4;
+            decimal percentage = 0;
+            if (dataView_students.Rows.Count != 0)
+            {
+                decimal assigned = 0;
+                decimal unassigned = 0;
+
+                foreach (DataGridViewRow row in dataView_students.Rows)
+                {
+                    Boolean assigned_advisor = Convert.ToBoolean(row.Cells[5].Value);
+                    if (row.Cells[5].Value != null)
+                    {
+                        if (assigned_advisor) assigned++;
+                        else unassigned++;
+                    }
+                }
+                percentage = unassigned == 0 ? 100 : (assigned / unassigned) * 100;
+            }
+            return percentage;
         }
     }
 }
