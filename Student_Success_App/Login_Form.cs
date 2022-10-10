@@ -14,9 +14,11 @@ namespace Student_Success_App
     {
         static private string username = "admin";
         static private string password = "password";
-        public Login_Form()
+        private Advisor_Form advisor_form;
+        public Login_Form(Advisor_Form advisor_Form)
         {
             InitializeComponent();
+            this.advisor_form = advisor_Form;
         }
 
         private void Login_Form_Load(object sender, EventArgs e)
@@ -28,8 +30,6 @@ namespace Student_Success_App
         {
             if (textBox_username.Text == username && textBox_password.Text == password)
             { 
-                Advisor_Form advisor_form = new Advisor_Form();
-                advisor_form.update_gpa(4.5);
                 advisor_form.Show();
                 this.Close();
             }
