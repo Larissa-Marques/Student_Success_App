@@ -159,12 +159,24 @@ namespace Student_Success_App
 
         private void btn_advisor_portal_Click(object sender, EventArgs e)
         {
-            decimal avg_gpa = 2;
-            decimal percent_with_advisors = 6;
+            decimal avg_gpa = calculate_avg_gpa();
+            decimal percent_with_advisors = calculate_percent_with_advisors();
 
             Advisor_Form advisor_form = new Advisor_Form(avg_gpa, percent_with_advisors);
             Login_Form login_form = new Login_Form(advisor_form);
             login_form.Show();
+        }
+
+        private decimal calculate_avg_gpa()
+        {
+            // Calcualte the average gpa of the whole studnet list 
+            return 2;
+        }
+
+        private decimal calculate_percent_with_advisors()
+        {
+            // Calcualte the percentage of students with an advisor for the entire student list
+            return 4;
         }
     }
 }
