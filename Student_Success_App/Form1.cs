@@ -1,5 +1,5 @@
 ﻿// The purpose of this application is to filter if students are high, moderate or low risk depending on 
-// different variables such as GPA and meeeting with an advisor. 
+// different variables such as GPA and meeting with an advisor. 
 
 using System;
 using System.Windows.Forms;
@@ -28,18 +28,26 @@ namespace Student_Success_App
             Boolean assgined_ad = false;
             if (checkBox_advisor.Checked) assgined_ad = true;
 
-            decimal gpa = Convert.ToDecimal(textBox_GPA.Text);
+            decimal gpa = 0;
+            try
+            {
+                gpa = Convert.ToDecimal(textBox_GPA.Text);
+                if (gpa < 0 || gpa > 4) throw new Exception();
+                studentSuccessListTableAdapter.InsertQuery(
+                    textBox_name.Text,
+                    comboBox_major.Text,
+                    comboBox_year.Text,
+                    gpa,
+                    assgined_ad,
+                    dateTimePicker_appt.Value.ToShortDateString()
+                );
 
-            studentSuccessListTableAdapter.InsertQuery(
-                textBox_name.Text,
-                comboBox_major.Text,
-                comboBox_year.Text,
-                gpa,
-                assgined_ad,
-                dateTimePicker_appt.Value.ToShortDateString()
-            );
-
-            this.studentSuccessListTableAdapter.Fill(this.student_dbDataSet.StudentSuccessList);
+                this.studentSuccessListTableAdapter.Fill(this.student_dbDataSet.StudentSuccessList);
+            }
+            catch
+            {
+                MessageBox.Show("Invalid Input!");
+            }
         }
 
         private void btn_clear_Click(object sender, EventArgs e)
@@ -60,7 +68,7 @@ namespace Student_Success_App
             dataView_students.ClearSelection();
             foreach (DataGridViewRow row in dataView_students.Rows)
             {
-                if (row.Cells[1].Value != null && row.Cells[1].Value.ToString().Equals(search_term))
+                if (row.Cells[1].Value != null && row.Cells[1].Value.ToString().ToLower().Equals(search_term.ToLower()))
                 {
                     row.Selected = true;
                     search_found = true;
@@ -73,6 +81,7 @@ namespace Student_Success_App
         private void btn_high_GPA_Click(object sender, EventArgs e)
         {
             // When this button is clicked, it will find and highlight the record with the highest GPA.
+            dataView_students.ClearSelection();
             if (dataView_students.Rows.Count != 0)
             {
                 decimal highest_GPA = 0;
@@ -93,7 +102,7 @@ namespace Student_Success_App
         private void btn_low_GPA_Click(object sender, EventArgs e)
         {
             // When this button is clicked, it will find and highlight the record with the lowest GPA.
-
+            dataView_students.ClearSelection();
             if (dataView_students.Rows.Count != 0)
             {
                 decimal lowest_GPA = 4;
@@ -146,6 +155,12 @@ namespace Student_Success_App
         private void high_risk_rbn_CheckedChanged(object sender, EventArgs e)
         {
             this.studentSuccessListTableAdapter.HighRisk(this.student_dbDataSet.StudentSuccessList);
+        }
+
+        private void btn_advisor_portal_Click(object sender, EventArgs e)
+        {
+            Login_Form login_form = new Login_Form();
+            login_form.Show();
         }
     }
 }
